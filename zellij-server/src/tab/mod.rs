@@ -154,8 +154,8 @@ macro_rules! resize_pty {
 }
 
 // FIXME: This should be replaced by `RESIZE_PERCENT` at some point
-pub const MIN_TERMINAL_HEIGHT: usize = 5;
-pub const MIN_TERMINAL_WIDTH: usize = 5;
+pub const MIN_TERMINAL_HEIGHT: usize = 0;
+pub const MIN_TERMINAL_WIDTH: usize = 0;
 
 const MAX_PENDING_VTE_EVENTS: usize = 7000;
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -197,7 +197,7 @@ impl PaneNotCreatedReason {
     }
     pub fn pane_error_text(&self) -> Option<&'static str> {
         match self {
-            PaneNotCreatedReason::NoRoom => Some("CAN'T SPLIT!"),
+            PaneNotCreatedReason::NoRoom => Some("CAN'T SPLIT!"),//error we got
             PaneNotCreatedReason::FloatingPanesVisible => Some("FLOATING PANES VISIBLE!"),
             _ => None,
         }
